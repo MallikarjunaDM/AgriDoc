@@ -11,7 +11,7 @@ import { Leaf, CheckCircle2 } from "lucide-react";
 export default function OnboardingPage() {
     const router = useRouter();
     const [step, setStep] = useState(1);
-    const totalSteps = 5;
+    const totalSteps = 4;
 
     const handleNext = () => {
         if (step < totalSteps) {
@@ -71,17 +71,6 @@ export default function OnboardingPage() {
 
                     {step === 3 && (
                         <div className="space-y-4 animate-in fade-in slide-in-from-right-4">
-                            <h2 className="text-2xl font-bold">Where is your farm located?</h2>
-                            <p className="text-muted-foreground">We need this for local weather and community alerts.</p>
-                            <div className="space-y-2">
-                                <Label>District / Taluka</Label>
-                                <Input placeholder="e.g. Bellary, Karnataka" />
-                            </div>
-                        </div>
-                    )}
-
-                    {step === 4 && (
-                        <div className="space-y-4 animate-in fade-in slide-in-from-right-4">
                             <h2 className="text-2xl font-bold">What challenges do you face?</h2>
                             <p className="text-muted-foreground">Select all that apply.</p>
                             <div className="flex flex-wrap gap-2">
@@ -94,7 +83,7 @@ export default function OnboardingPage() {
                         </div>
                     )}
 
-                    {step === 5 && (
+                    {step === 4 && (
                         <div className="space-y-4 animate-in fade-in slide-in-from-right-4 text-center">
                             <div className="mx-auto h-16 w-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
                                 <CheckCircle2 className="h-8 w-8 text-green-600" />
@@ -104,8 +93,7 @@ export default function OnboardingPage() {
                         </div>
                     )}
                 </CardContent>
-                <CardFooter className="flex justify-between border-t pt-6">
-                    <Button variant="ghost" onClick={skip}>Skip</Button>
+                <CardFooter className="flex justify-end border-t pt-6">
                     <Button onClick={handleNext} className="bg-green-600 hover:bg-green-700">
                         {step === totalSteps ? "Go to Dashboard" : "Continue"}
                     </Button>
