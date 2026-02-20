@@ -252,12 +252,51 @@ const ScrollExpandMedia = ({
                                         </p>
                                     )}
                                 </div>
+                                {/* Overlay text ON TOP of video */}
+                                <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4 pointer-events-none">
+                                    {/* Dark gradient for text readability */}
+                                    <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50 rounded-xl" />
+                                    <div className="relative z-10 flex flex-col items-center gap-3">
+                                        <h1
+                                            className="font-black text-white"
+                                            style={{
+                                                fontSize: 'clamp(2.5rem, 8vw, 7rem)',
+                                                textShadow: '0 4px 24px rgba(0,0,0,0.7)',
+                                                letterSpacing: '-0.02em',
+                                                lineHeight: 1.1,
+                                                transform: `translateX(-${textTranslateX * 0.3}vw)`,
+                                            }}
+                                        >
+                                            Agriculture
+                                        </h1>
+                                        <h1
+                                            className="font-black text-emerald-300"
+                                            style={{
+                                                fontSize: 'clamp(2.5rem, 8vw, 7rem)',
+                                                textShadow: '0 4px 24px rgba(0,0,0,0.7)',
+                                                letterSpacing: '-0.02em',
+                                                lineHeight: 1.1,
+                                                transform: `translateX(${textTranslateX * 0.3}vw)`,
+                                            }}
+                                        >
+                                            Doctor
+                                        </h1>
+                                        {date && (
+                                            <p className="text-white/90 font-semibold mt-2" style={{ fontSize: 'clamp(1rem,2vw,1.4rem)', textShadow: '0 2px 8px rgba(0,0,0,0.6)' }}>
+                                                {date}
+                                            </p>
+                                        )}
+                                        {scrollToExpand && (
+                                            <p className="text-white/70 font-medium mt-1 animate-pulse" style={{ fontSize: 'clamp(0.85rem,1.5vw,1.1rem)' }}>
+                                                {scrollToExpand}
+                                            </p>
+                                        )}
+                                    </div>
+                                </div>
                             </div>
 
-                            {/* Title text split animation */}
-                            <div
-                                className={`flex items-center justify-center text-center gap-4 w-full relative z-10 transition-none flex-col ${textBlend ? 'mix-blend-difference' : 'mix-blend-normal'}`}
-                            >
+                            {/* Hidden original title block — kept for layout but invisible */}
+                            <div className="hidden">
                                 <motion.h2
                                     className="text-6xl md:text-7xl lg:text-9xl font-black text-blue-200 transition-none"
                                     style={{ transform: `translateX(-${textTranslateX}vw)` }}

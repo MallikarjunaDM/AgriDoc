@@ -215,7 +215,7 @@ function NicheSelector() {
       {/* ── Waitlist banner ─────────────────────────────────────────────── */}
       <div className="mt-16 mx-auto max-w-2xl bg-gradient-to-r from-emerald-50 via-green-50 to-emerald-50 border border-emerald-200 rounded-2xl px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-gray-700 font-bold text-xl text-center sm:text-left">
-          🚀 More niches launching in 2025 — be first to know
+          🚀 More niches launching in 2026 — be first to know
         </p>
         <button onClick={() => setWaitlistNiche('general')}
           className="shrink-0 px-10 py-4 rounded-xl bg-emerald-600 text-white font-black text-lg hover:bg-emerald-700 transition-colors">
@@ -308,9 +308,9 @@ export default function HeroPage() {
       {/* ── Original ScrollExpand Hero ──────────────────────────────────── */}
       <ScrollExpandMedia
         mediaType="video"
-        mediaSrc="https://videos.pexels.com/video-files/5187895/5187895-uhd_2560_1440_25fps.mp4"
-        posterSrc="https://images.unsplash.com/photo-1589923188651-268a9765e432?q=80&w=1280&auto=format&fit=crop"
-        bgImageSrc="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1920&auto=format&fit=crop"
+        mediaSrc="https://videos.pexels.com/video-files/4813946/4813946-uhd_2560_1440_25fps.mp4"
+        posterSrc="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1280&auto=format&fit=crop"
+        bgImageSrc="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1920&auto=format&fit=crop"
         title="Agriculture Doctor"
         date="🌾 AI-Powered Farming Intelligence"
         scrollToExpand="Scroll to explore →"
