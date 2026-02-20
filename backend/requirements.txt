@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pydantic
+supabase
+python-multipart
+openai
+langchain
+requests
+python-dotenv
+google-generativeai
