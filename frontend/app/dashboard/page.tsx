@@ -13,6 +13,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { useUserProfile } from "@/context/UserProfileContext";
 import { t as translations } from "@/lib/translations";
 import AuroraBorealisShader from "@/components/ui/aurora-borealis-shader";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 import {
     CloudSun,
     Thermometer,
@@ -241,43 +242,63 @@ export default function Dashboard() {
                     <div className="h-full"><WeatherCard /></div>
                     <div className="h-full"><ClimateCard /></div>
 
-                    <Card>
-                        <CardContent className="p-6 flex items-center justify-between">
-                            <div>
-                                <p className="text-sm text-slate-500 font-medium">{t.seasonStage}</p>
-                                <h3 className="text-2xl font-bold mt-1">{t.growing}</h3>
-                                <p className="text-xs text-slate-500 mt-1">Wheat (Day 45)</p>
-                            </div>
-                            <div className="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center">
-                                <Leaf className="h-6 w-6 text-blue-600" />
-                            </div>
-                        </CardContent>
-                    </Card>
+                    <div className="relative h-full rounded-xl">
+                        <GlowingEffect
+                            spread={40}
+                            glow={true}
+                            disabled={false}
+                            proximity={64}
+                            inactiveZone={0.01}
+                            borderWidth={3}
+                        />
+                        <Card className="h-full relative z-10">
+                            <CardContent className="p-6 flex items-center justify-between">
+                                <div>
+                                    <p className="text-sm text-slate-500 font-medium">{t.seasonStage}</p>
+                                    <h3 className="text-2xl font-bold mt-1">{t.growing}</h3>
+                                    <p className="text-xs text-slate-500 mt-1">Wheat (Day 45)</p>
+                                </div>
+                                <div className="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <Leaf className="h-6 w-6 text-blue-600" />
+                                </div>
+                            </CardContent>
+                        </Card>
+                    </div>
 
                     {/* Soil Type Card */}
-                    <Card
-                        className="cursor-pointer border-2 border-dashed border-amber-200 hover:border-amber-400 transition-colors"
-                        onClick={() => setShowLocationSetup(true)}
-                    >
-                        <CardContent className="p-6 flex items-center justify-between">
-                            <div>
-                                <p className="text-sm text-slate-500 font-medium">Soil Type</p>
-                                {profile.soilType ? (
-                                    <>
-                                        <h3 className="text-lg font-bold mt-1 text-amber-800 leading-tight">{profile.soilType.split(" (")[0]}</h3>
-                                        {profile.soilType.includes("(") && (
-                                            <p className="text-xs text-amber-600 mt-0.5">{profile.soilType.match(/\(([^)]+)\)/)?.[1]}</p>
-                                        )}
-                                    </>
-                                ) : (
-                                    <p className="text-sm text-amber-600 font-medium mt-2">Tap to set soil type</p>
-                                )}
-                            </div>
-                            <div className="h-12 w-12 bg-amber-100 rounded-full flex items-center justify-center shrink-0">
-                                <Layers className="h-6 w-6 text-amber-700" />
-                            </div>
-                        </CardContent>
-                    </Card>
+                    <div className="relative h-full rounded-xl">
+                        <GlowingEffect
+                            spread={40}
+                            glow={true}
+                            disabled={false}
+                            proximity={64}
+                            inactiveZone={0.01}
+                            borderWidth={3}
+                        />
+                        <Card
+                            className="h-full cursor-pointer border-2 border-dashed border-amber-200 hover:border-amber-400 transition-colors relative z-10"
+                            onClick={() => setShowLocationSetup(true)}
+                        >
+                            <CardContent className="p-6 flex items-center justify-between">
+                                <div>
+                                    <p className="text-sm text-slate-500 font-medium">Soil Type</p>
+                                    {profile.soilType ? (
+                                        <>
+                                            <h3 className="text-lg font-bold mt-1 text-amber-800 leading-tight">{profile.soilType.split(" (")[0]}</h3>
+                                            {profile.soilType.includes("(") && (
+                                                <p className="text-xs text-amber-600 mt-0.5">{profile.soilType.match(/\(([^)]+)\)/)?.[1]}</p>
+                                            )}
+                                        </>
+                                    ) : (
+                                        <p className="text-sm text-amber-600 font-medium mt-2">Tap to set soil type</p>
+                                    )}
+                                </div>
+                                <div className="h-12 w-12 bg-amber-100 rounded-full flex items-center justify-center shrink-0">
+                                    <Layers className="h-6 w-6 text-amber-700" />
+                                </div>
+                            </CardContent>
+                        </Card>
+                    </div>
                 </div>
 
                 {/* Insight of the Day */}
@@ -310,48 +331,60 @@ export default function Dashboard() {
                 <h2 className="text-lg font-bold text-slate-800 mb-4">{t.quickActions}</h2>
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                     <Link href="/doctor">
-                        <Card className="hover:shadow-md transition-shadow cursor-pointer h-full border-green-200 bg-green-50/50">
-                            <CardContent className="p-6 flex flex-col items-center text-center gap-3">
-                                <div className="h-14 w-14 bg-white rounded-full shadow-sm flex items-center justify-center">
-                                    <Stethoscope className="h-7 w-7 text-green-600" />
-                                </div>
-                                <h3 className="font-bold text-green-900">{t.consultAI}</h3>
-                                <p className="text-xs text-green-700">{t.chatCrop}</p>
-                            </CardContent>
-                        </Card>
+                        <div className="relative h-full rounded-xl">
+                            <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} borderWidth={3} />
+                            <Card className="hover:shadow-md transition-shadow cursor-pointer h-full border-green-200 bg-green-50/50 relative z-10">
+                                <CardContent className="p-6 flex flex-col items-center text-center gap-3">
+                                    <div className="h-14 w-14 bg-white rounded-full shadow-sm flex items-center justify-center">
+                                        <Stethoscope className="h-7 w-7 text-green-600" />
+                                    </div>
+                                    <h3 className="font-bold text-green-900">{t.consultAI}</h3>
+                                    <p className="text-xs text-green-700">{t.chatCrop}</p>
+                                </CardContent>
+                            </Card>
+                        </div>
                     </Link>
                     <Link href="/detect">
-                        <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
-                            <CardContent className="p-6 flex flex-col items-center text-center gap-3">
-                                <div className="h-14 w-14 bg-blue-50 rounded-full flex items-center justify-center">
-                                    <Leaf className="h-7 w-7 text-blue-600" />
-                                </div>
-                                <h3 className="font-bold text-slate-800">{t.scanDisease}</h3>
-                                <p className="text-xs text-slate-500">{t.photoDetection}</p>
-                            </CardContent>
-                        </Card>
+                        <div className="relative h-full rounded-xl">
+                            <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} borderWidth={3} />
+                            <Card className="hover:shadow-md transition-shadow cursor-pointer h-full relative z-10">
+                                <CardContent className="p-6 flex flex-col items-center text-center gap-3">
+                                    <div className="h-14 w-14 bg-blue-50 rounded-full flex items-center justify-center">
+                                        <Leaf className="h-7 w-7 text-blue-600" />
+                                    </div>
+                                    <h3 className="font-bold text-slate-800">{t.scanDisease}</h3>
+                                    <p className="text-xs text-slate-500">{t.photoDetection}</p>
+                                </CardContent>
+                            </Card>
+                        </div>
                     </Link>
                     <Link href="/collective">
-                        <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
-                            <CardContent className="p-6 flex flex-col items-center text-center gap-3">
-                                <div className="h-14 w-14 bg-purple-50 rounded-full flex items-center justify-center">
-                                    <Users className="h-7 w-7 text-purple-600" />
-                                </div>
-                                <h3 className="font-bold text-slate-800">{t.communityMap}</h3>
-                                <p className="text-xs text-slate-500">{t.viewLocalAlerts}</p>
-                            </CardContent>
-                        </Card>
+                        <div className="relative h-full rounded-xl">
+                            <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} borderWidth={3} />
+                            <Card className="hover:shadow-md transition-shadow cursor-pointer h-full relative z-10">
+                                <CardContent className="p-6 flex flex-col items-center text-center gap-3">
+                                    <div className="h-14 w-14 bg-purple-50 rounded-full flex items-center justify-center">
+                                        <Users className="h-7 w-7 text-purple-600" />
+                                    </div>
+                                    <h3 className="font-bold text-slate-800">{t.communityMap}</h3>
+                                    <p className="text-xs text-slate-500">{t.viewLocalAlerts}</p>
+                                </CardContent>
+                            </Card>
+                        </div>
                     </Link>
                     <Link href="/market">
-                        <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
-                            <CardContent className="p-6 flex flex-col items-center text-center gap-3">
-                                <div className="h-14 w-14 bg-orange-50 rounded-full flex items-center justify-center">
-                                    <ShoppingCart className="h-7 w-7 text-orange-600" />
-                                </div>
-                                <h3 className="font-bold text-slate-800">{t.marketplace}</h3>
-                                <p className="text-xs text-slate-500">{t.buyInputs}</p>
-                            </CardContent>
-                        </Card>
+                        <div className="relative h-full rounded-xl">
+                            <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} borderWidth={3} />
+                            <Card className="hover:shadow-md transition-shadow cursor-pointer h-full relative z-10">
+                                <CardContent className="p-6 flex flex-col items-center text-center gap-3">
+                                    <div className="h-14 w-14 bg-orange-50 rounded-full flex items-center justify-center">
+                                        <ShoppingCart className="h-7 w-7 text-orange-600" />
+                                    </div>
+                                    <h3 className="font-bold text-slate-800">{t.marketplace}</h3>
+                                    <p className="text-xs text-slate-500">{t.buyInputs}</p>
+                                </CardContent>
+                            </Card>
+                        </div>
                     </Link>
                 </div>
 

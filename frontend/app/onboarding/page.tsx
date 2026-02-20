@@ -13,6 +13,15 @@ export default function OnboardingPage() {
     const [step, setStep] = useState(1);
     const totalSteps = 4;
     const [acres, setAcres] = useState(5);
+    const [challenges, setChallenges] = useState<string[]>([]);
+
+    const toggleChallenge = (challenge: string) => {
+        setChallenges(prev =>
+            prev.includes(challenge)
+                ? prev.filter(c => c !== challenge)
+                : [...prev, challenge]
+        );
+    };
 
     const handleNext = () => {
         if (step < totalSteps) {
@@ -83,11 +92,21 @@ export default function OnboardingPage() {
                             <h2 className="text-2xl font-bold">What challenges do you face?</h2>
                             <p className="text-muted-foreground">Select all that apply.</p>
                             <div className="flex flex-wrap gap-2">
-                                {['Pests', 'Fungal Diseases', 'Water Shortage', 'Soil Quality', 'Market Prices', 'Labor'].map((issue) => (
-                                    <button key={issue} className="px-3 py-2 rounded-full border hover:bg-green-50 hover:border-green-500 text-sm">
-                                        {issue}
-                                    </button>
-                                ))}
+                                {['Pests', 'Fungal Diseases', 'Water Shortage', 'Soil Quality', 'Market Prices', 'Labor'].map((issue) => {
+                                    const isSelected = challenges.includes(issue);
+                                    return (
+                                        <button
+                                            key={issue}
+                                            onClick={() => toggleChallenge(issue)}
+                                            className={`px-3 py-2 rounded-full border text-sm transition-colors ${isSelected
+                                                ? "bg-green-100 border-green-500 text-green-700 font-medium ring-1 ring-green-500"
+                                                : "hover:bg-green-50 hover:border-green-500"
+                                                }`}
+                                        >
+                                            {issue}
+                                        </button>
+                                    );
+                                })}
                             </div>
                         </div>
                     )}
