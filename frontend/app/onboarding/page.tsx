@@ -12,6 +12,7 @@ export default function OnboardingPage() {
     const router = useRouter();
     const [step, setStep] = useState(1);
     const totalSteps = 4;
+    const [acres, setAcres] = useState(5);
 
     const handleNext = () => {
         if (step < totalSteps) {
@@ -60,8 +61,16 @@ export default function OnboardingPage() {
                     {step === 2 && (
                         <div className="space-y-4 animate-in fade-in slide-in-from-right-4">
                             <h2 className="text-2xl font-bold">How much land do you farm?</h2>
-                            <Label>Acres: <span className="font-bold text-lg">5.0</span></Label>
-                            <input type="range" min="0.5" max="100" step="0.5" className="w-full accent-green-600" />
+                            <Label>Acres: <span className="font-bold text-lg text-green-700">{acres.toFixed(1)}</span></Label>
+                            <input
+                                type="range"
+                                min="0.5"
+                                max="100"
+                                step="0.5"
+                                value={acres}
+                                onChange={(e) => setAcres(Number(e.target.value))}
+                                className="w-full accent-green-600"
+                            />
                             <div className="flex justify-between text-xs text-muted-foreground">
                                 <span>0.5 Acre</span>
                                 <span>100+ Acres</span>
